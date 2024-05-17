@@ -248,11 +248,26 @@ footer a {
 footer a:hover {
   color: var(--blue);
 } 
+	  #play-button {
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 25px;
+      background-color: #4CAF50; /* Green background */
+      color: white; /* White text */
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #play-button:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
   </style>
     <link rel="icon" href="./favicon.png" type="image/png" style="border-radius: 50%;"> 
 
 </head>
 <body>
+	<audio id="my_audio" src="./audio.mp3" loop="loop"></audio>
     <div class="container">
   <div class="balloon white">
     <div class="star-red"></div>
@@ -291,6 +306,11 @@ footer a:hover {
 </html>
 
 <script>
+	document.getElementById('play-button').addEventListener('click', function() {
+  document.getElementById('my_audio').play();
+  this.style.display = 'none'; // Hide the button after playing the audio
+});
+	
   const year = (new Date().getFullYear()) ;
 const landingDate = new Date(2024, 4, 23, 16, 30, 0).getTime();
 
