@@ -4,19 +4,18 @@
   <meta charset="UTF-8">
   <title>Reunion M&S</title>
   <style>
-    @import url('https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900');
+	  /* Define CSS variables based on your SCSS variables */
+:root {
+  --font: 'Lato', sans-serif;
+  --big: 'Montserrat', sans-serif;
+  --red: #EF2F3C;
+  --white: #F6F4F3;
+  --blue: #276FBF;
+  --dark: #183059;
+  --yellow: #F0A202;
+  --star: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
 
-$font: 'Lato', sans-serif;
-$big: 'Montserrat', sans-serif;
-
-$red: #EF2F3C;
-$white: #F6F4F3;
-$blue: #276FBF;
-$dark: #183059;
-$yellow: #F0A202;
-
-$star: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-  
 html {
   display: grid;
   min-height: 100%;
@@ -24,7 +23,7 @@ html {
 
 body {
   display: grid;
-  background: $dark;
+  background: var(--dark);
 }
 
 .container {
@@ -36,27 +35,29 @@ body {
 }
 
 h1, h2 {
-  font-family: $font;
+  font-family: var(--font);
   text-align: center;
   margin-top: 2em;
   text-transform: uppercase;
   letter-spacing: 5px;
-  color: $white;
+  color: var(--white);
 }
 
 h1 {
-	font-size: 2em;
+  font-size: 2em;
 }
+
 h2 {
-	font-size: 1em;
-	margin-top:0;
+  font-size: 1em;
+  margin-top: 0;
 }
+
 #timer {
-  color: $white;
+  color: var(--white);
   text-align: center;
   text-transform: uppercase;
-  font-family: $font;
-  font-size: .7em;
+  font-family: var(--font);
+  font-size: 0.7em;
   letter-spacing: 5px;
   margin-top: 25%;
 }
@@ -69,77 +70,80 @@ h2 {
 }
 
 .days {
-  background: $red;
+  background: var(--red);
 }
 
 .hours {
-  background: $white;
-  color: $dark;
+  background: var(--white);
+  color: var(--dark);
 }
 
 .minutes {
-  background: $blue;
+  background: var(--blue);
 }
 
 .seconds {
-  background: $yellow;
-  .numbers {
-   
-  }
+  background: var(--yellow);
 }
 
 .numbers {
-  font-family: $big;
-  color: $dark;
+  font-family: var(--big);
+  color: var(--dark);
   font-size: 5em;
 }
 
 .white {
   position: absolute;
-  background: $white;
+  background: var(--white);
   height: 85px;
   width: 75px;
   left: 30%;
   top: 2%;
-  .triangle {
-    border-bottom: 14px solid $white;
-  }
-  .string {
-    background: $white;
-    border: 1px solid $white;
-  }
+}
+
+.white .triangle {
+  border-bottom: 14px solid var(--white);
+}
+
+.white .string {
+  background: var(--white);
+  border: 1px solid var(--white);
 }
 
 .red {
   position: absolute;
-  background: $red;
+  background: var(--red);
   left: 18%;
   top: 9%;
   height: 65px;
   width: 70px;
-  .triangle {
-    border-bottom: 14px solid $red;
-  }
-  .string {
-    background: $red;
-    border: 1px solid $red;
-  }
+}
+
+.red .triangle {
+  border-bottom: 14px solid var(--red);
+}
+
+.red .string {
+  background: var(--red);
+  border: 1px solid var(--red);
 }
 
 .blue {
   position: absolute;
-  background: $blue;
+  background: var(--blue);
   height: 80px;
   width: 80px;
   left: 60%;
   top: 5%;
-  .triangle {
-    border-bottom: 14px solid $blue;
-  }
-  .string {
-    background: $blue;
-    border: 1px solid $blue;
-  }
+}
+
+.blue .triangle {
+  border-bottom: 14px solid var(--blue);
+}
+
+.blue .string {
+  background: var(--blue);
+  border: 1px solid var(--blue);
 }
 
 .balloon {
@@ -156,19 +160,20 @@ h2 {
   left: 22%;
   background: #000;
   border-radius: 50%;
-  &:after {
-    content: '';
-    left: 35px;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #000;
-    position: absolute;
-  }
+}
+
+.eye:after {
+  content: '';
+  left: 35px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #000;
+  position: absolute;
 }
 
 .mouth {
-  position:absolute;
+  position: absolute;
   top: 45%;
   left: 43%;
   width: 7px;
@@ -187,9 +192,9 @@ h2 {
   left: 40%;
   bottom: -10%;
   width: 0;
-	height: 0;
-	border-left: 7px solid transparent;
-	border-right: 7px solid transparent;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
 }
 
 .string {
@@ -204,9 +209,9 @@ h2 {
 .star {
   width: 20px;
   height: 20px;
-  background: $white;
-  -webkit-clip-path: $star;
-  clip-path: $star;
+  background: var(--white);
+  -webkit-clip-path: var(--star);
+  clip-path: var(--star);
 }
 
 .star-red {
@@ -214,9 +219,9 @@ h2 {
   height: 30px;
   margin-left: 51px;
   margin-top: -5px;
-  background: $red;
-  -webkit-clip-path: $star;
-  clip-path: $star;
+  background: var(--red);
+  -webkit-clip-path: var(--star);
+  clip-path: var(--star);
 }
 
 footer {
@@ -225,20 +230,25 @@ footer {
   right: 0;
   text-transform: uppercase;
   padding: 10px;
-  font-family: $font;
+  font-family: var(--font);
   font-size: 0.7em;
-  p {
-    letter-spacing: 3px;
-    color: $red;
-  }
-  a {
-    color: $white;
-    text-decoration: none;
-    &:hover {
-      color: $blue;
-    }
-  }
 }
+
+footer p {
+  letter-spacing: 3px;
+  color: var(--red);
+}
+
+footer a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--blue);
+}
+
+  
   </style>
     <link rel="icon" href="./favicon.png" type="image/png" style="border-radius: 50%;"> 
 
