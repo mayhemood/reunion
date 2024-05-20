@@ -326,7 +326,18 @@ let timer = setInterval(function() {
 
   if (diff <= 0) {
       clearInterval(timer);
-      document.getElementById("timer").innerHTML = "We are together now!";
+      document.getElementById("timer").innerHTML =
+        "<div class=\"days\"> \
+          <div class=\"numbers\">0</div>days</div> \
+        <div class=\"hours\"> \
+          <div class=\"numbers\">0</div>hours</div> \
+        <div class=\"minutes\"> \
+          <div class=\"numbers\">0</div>minutes</div> \
+        <div class=\"seconds\"> \
+          <div class=\"numbers\">0</div>seconds</div> \
+        </div>";
+      document.querySelector('h1').innerHTML = "Mehmood &amp; Samiya are together";
+      document.querySelector('h2').style.display = 'none'; // hide the date
       return;
     }
 
