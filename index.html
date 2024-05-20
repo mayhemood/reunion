@@ -324,6 +324,12 @@ let timer = setInterval(function() {
   // get the difference
   const diff = landingDate - today;
 
+  if (diff <= 0) {
+      clearInterval(timer);
+      document.getElementById("timer").innerHTML = "We are together now!";
+      return;
+    }
+
   // math
   let days = Math.floor(diff / (1000 * 60 * 60 * 24));
   let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
