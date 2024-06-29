@@ -314,6 +314,10 @@ footer a:hover {
   const year = (new Date().getFullYear()) ;
 const landingDate = new Date(2024, 7, 8, 01, 30, 0).getTime();
 
+	function updateTitle(days) {
+    document.title = `Wait for... ${days} days`;
+  }
+	
 // countdown
 let timer = setInterval(function() {
 
@@ -357,6 +361,8 @@ let timer = setInterval(function() {
 <div class=\"seconds\"> \
   <div class=\"numbers\">" + seconds + "</div>seconds</div> \
 </div>";
+
+	updateTitle(days);
 
 }, 1000);
 </script>
