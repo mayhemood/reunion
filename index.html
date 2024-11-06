@@ -306,28 +306,30 @@ footer a:hover {
 </html>
 
 <script>
-	document.getElementById('play-button').addEventListener('click', function() {
-  document.getElementById('my_audio').play();
-  this.style.display = 'none'; // Hide the button after playing the audio
-});
-	
-  const year = (new Date().getFullYear()) ;
-const landingDate = new Date(2025, 1, 17, 04, 30, 0).getTime();
+  document.getElementById('play-button').addEventListener('click', function() {
+    document.getElementById('my_audio').play();
+    this.style.display = 'none'; // Hide the button after playing the audio
+  });
 
-	function updateTitle(days) {
+  function getGermanTime() {
+    return new Date().toLocaleString("en-US", { timeZone: "Europe/Berlin" });
+  }
+
+  const landingDate = new Date('2025-02-17T01:30:00+01:00').getTime();
+
+  function updateTitle(days) {
     document.title = `Wait for... ${days} days`;
   }
-	
-// countdown
-let timer = setInterval(function() {
 
-  // get today's date
-  const today = new Date().getTime();
+  // Countdown
+  let timer = setInterval(function() {
+    // Current date in German time
+    const today = new Date(getGermanTime()).getTime();
 
-  // get the difference
-  const diff = landingDate - today;
+    // Calculate difference
+    const diff = landingDate - today;
 
-  if (diff <= 0) {
+    if (diff <= 0) {
       clearInterval(timer);
       document.getElementById("timer").innerHTML =
         "<div class=\"days\"> \
@@ -340,29 +342,30 @@ let timer = setInterval(function() {
           <div class=\"numbers\">0</div>seconds</div> \
         </div>";
       document.querySelector('h1').innerHTML = "Mehmood &amp; Samiya";
-      document.querySelector('h2').innerHTML = "are together"; // hide the date
+      document.querySelector('h2').innerHTML = "are together";
       return;
     }
 
-  // math
-  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    // Math calculations
+    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-  // display
-  document.getElementById("timer").innerHTML =
-    "<div class=\"days\"> \
-  <div class=\"numbers\">" + days + "</div>days</div> \
-<div class=\"hours\"> \
-  <div class=\"numbers\">" + hours + "</div>hours</div> \
-<div class=\"minutes\"> \
-  <div class=\"numbers\">" + minutes + "</div>minutes</div> \
-<div class=\"seconds\"> \
-  <div class=\"numbers\">" + seconds + "</div>seconds</div> \
-</div>";
+    // Display countdown
+    document.getElementById("timer").innerHTML =
+      "<div class=\"days\"> \
+        <div class=\"numbers\">" + days + "</div>days</div> \
+      <div class=\"hours\"> \
+        <div class=\"numbers\">" + hours + "</div>hours</div> \
+      <div class=\"minutes\"> \
+        <div class=\"numbers\">" + minutes + "</div>minutes</div> \
+      <div class=\"seconds\"> \
+        <div class=\"numbers\">" + seconds + "</div>seconds</div> \
+      </div>";
 
-	updateTitle(days);
-
-}, 1000);
+    updateTitle(days);
+  }, 1000);
 </script>
+
+  
